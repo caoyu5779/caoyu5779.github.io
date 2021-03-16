@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="2020-12-09sort包排序golang中sort包自带了一些排序的方法。 整数、浮点数、字符串切片排序sort.Ints sort.Floats sort.Strings 自定义比较器sort.SliceStable在排序切片时会保留相等元素的原始顺序 12345678910111213141516171819&#x2F;&#x2F; SortSlice 切片排序func SortSlic">
+  <meta name="description" content="2020-12-11数据存储存储行存储(大部分关系型数据库)和列存储，是数据库底层组织数据的方式 行存储行存储利于数据一行一行的写入，写入数据记录时，只需要将数据追加到已有数据记录后面，配合B+Tree和SS-Table作为索引，就能快速通过主键找到对应的行数据。 优势 数据写入会更快，对按记录查询数据更加简单  缺点 针对于数据统计等OLAP(在线分析处理)，行存储需要将对应的数据读入内存中，然">
 <meta property="og:type" content="article">
-<meta property="og:title" content="排序">
-<meta property="og:url" content="http://example.com/2020/12/09/2020-12-09/index.html">
+<meta property="og:title" content="行存储与列存储">
+<meta property="og:url" content="http://example.com/2020/12/11/2020-12-11/index.html">
 <meta property="og:site_name" content="Chaos">
-<meta property="og:description" content="2020-12-09sort包排序golang中sort包自带了一些排序的方法。 整数、浮点数、字符串切片排序sort.Ints sort.Floats sort.Strings 自定义比较器sort.SliceStable在排序切片时会保留相等元素的原始顺序 12345678910111213141516171819&#x2F;&#x2F; SortSlice 切片排序func SortSlic">
+<meta property="og:description" content="2020-12-11数据存储存储行存储(大部分关系型数据库)和列存储，是数据库底层组织数据的方式 行存储行存储利于数据一行一行的写入，写入数据记录时，只需要将数据追加到已有数据记录后面，配合B+Tree和SS-Table作为索引，就能快速通过主键找到对应的行数据。 优势 数据写入会更快，对按记录查询数据更加简单  缺点 针对于数据统计等OLAP(在线分析处理)，行存储需要将对应的数据读入内存中，然">
 <meta property="og:locale">
-<meta property="article:published_time" content="2020-12-09T02:23:23.000Z">
-<meta property="article:modified_time" content="2021-03-16T02:56:29.338Z">
+<meta property="article:published_time" content="2020-12-11T02:23:23.000Z">
+<meta property="article:modified_time" content="2021-03-16T02:56:29.850Z">
 <meta property="article:author" content="JesusLee">
 <meta property="article:tag" content="Future">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2020/12/09/2020-12-09/">
+<link rel="canonical" href="http://example.com/2020/12/11/2020-12-11/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>排序 | Chaos</title>
+  <title>行存储与列存储 | Chaos</title>
   
 
 
@@ -162,7 +162,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/09/2020-12-09/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/11/2020-12-11/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -175,7 +175,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          排序
+          行存储与列存储
         </h1>
 
         <div class="post-meta">
@@ -185,7 +185,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2020-12-09 10:23:23" itemprop="dateCreated datePublished" datetime="2020-12-09T10:23:23+08:00">2020-12-09</time>
+              <time title="Created: 2020-12-11 10:23:23" itemprop="dateCreated datePublished" datetime="2020-12-11T10:23:23+08:00">2020-12-11</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -215,14 +215,27 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="2020-12-09"><a href="#2020-12-09" class="headerlink" title="2020-12-09"></a>2020-12-09</h1><h2 id="sort包排序"><a href="#sort包排序" class="headerlink" title="sort包排序"></a>sort包排序</h2><p>golang中sort包自带了一些排序的方法。</p>
-<h2 id="整数、浮点数、字符串切片排序"><a href="#整数、浮点数、字符串切片排序" class="headerlink" title="整数、浮点数、字符串切片排序"></a>整数、浮点数、字符串切片排序</h2><p>sort.Ints</p>
-<p>sort.Floats</p>
-<p>sort.Strings</p>
-<h2 id="自定义比较器"><a href="#自定义比较器" class="headerlink" title="自定义比较器"></a>自定义比较器</h2><p>sort.SliceStable在排序切片时会保留相等元素的原始顺序</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; SortSlice 切片排序</span><br><span class="line">func SortSlice() &#123;</span><br><span class="line">	family :&#x3D; []struct &#123;</span><br><span class="line">		Name string</span><br><span class="line">		Age  int</span><br><span class="line">	&#125;&#123;</span><br><span class="line">		&#123;&quot;John&quot;, 23&#125;,</span><br><span class="line">		&#123;&quot;Alice&quot;, 23&#125;,</span><br><span class="line">		&#123;&quot;Jack&quot;, 44&#125;,</span><br><span class="line">		&#123;&quot;Leigh&quot;, 18&#125;,</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	sort.SliceStable(family, func(i, j int) bool &#123;</span><br><span class="line">		return family[i].Age &lt; family[j].Age</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	fmt.Println(&quot;after family:&quot;, family)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
+        <h1 id="2020-12-11"><a href="#2020-12-11" class="headerlink" title="2020-12-11"></a>2020-12-11</h1><h2 id="数据存储存储"><a href="#数据存储存储" class="headerlink" title="数据存储存储"></a>数据存储存储</h2><p>行存储(大部分关系型数据库)和列存储，是数据库底层组织数据的方式</p>
+<h2 id="行存储"><a href="#行存储" class="headerlink" title="行存储"></a>行存储</h2><p>行存储利于数据一行一行的写入，写入数据记录时，只需要将数据追加到已有数据记录后面，配合B+Tree和SS-Table作为索引，就能快速通过主键找到对应的行数据。</p>
+<h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><ol>
+<li>数据写入会更快，对按记录查询数据更加简单</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>针对于数据统计等OLAP(在线分析处理)，行存储需要将对应的数据读入内存中，然后对分析数据列进行数据分析操作。读多少行，就会有多少次磁盘访问。</li>
+<li>会读取到分析时不需要的列</li>
+<li>数据不利于压缩</li>
+</ol>
+<h2 id="列存储"><a href="#列存储" class="headerlink" title="列存储"></a>列存储</h2><p>列存储将每一列的数据组织在一起。每列存储在一个独立的文件中，一个查询只需要读取和解析查询里的列。</p>
+<h3 id="优势-1"><a href="#优势-1" class="headerlink" title="优势"></a>优势</h3><ol>
+<li>只需要少量次数就可以将需要分析的数据读取出来。</li>
+<li>可以只读取必要的列</li>
+<li>每一列本身相当于索引。所以在做一些需要索引的操作时，就不需要额外的数据结构来为此列创建合适的索引。</li>
+<li>利于大数据集的数据聚合操作</li>
+<li>每一列的数据都是相同类型的，相关性大，利于数据压缩。节约空间，减少IO读取</li>
+</ol>
+<h2 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h2><ol>
+<li>一行数据写入时，会同时修改多个列，对一个一个记录的数据，写入和读取都很慢</li>
+</ol>
 
     </div>
 
@@ -240,10 +253,13 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2020/12/10/2020-12-10/" rel="next" title="Go的Mock">
-      Go的Mock <i class="fa fa-chevron-right"></i>
+    <a href="/2020/12/10/2020-12-10/" rel="prev" title="Go的Mock">
+      <i class="fa fa-chevron-left"></i> Go的Mock
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/12/15/2020-12-15/" rel="next" title="今日所学">
+      今日所学 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -303,7 +319,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2020-12-09"><span class="nav-number">1.</span> <span class="nav-text">2020-12-09</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sort%E5%8C%85%E6%8E%92%E5%BA%8F"><span class="nav-number">1.1.</span> <span class="nav-text">sort包排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E6%95%B0%E3%80%81%E6%B5%AE%E7%82%B9%E6%95%B0%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%87%E7%89%87%E6%8E%92%E5%BA%8F"><span class="nav-number">1.2.</span> <span class="nav-text">整数、浮点数、字符串切片排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AF%94%E8%BE%83%E5%99%A8"><span class="nav-number">1.3.</span> <span class="nav-text">自定义比较器</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2020-12-11"><span class="nav-number">1.</span> <span class="nav-text">2020-12-11</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%AD%98%E5%82%A8"><span class="nav-number">1.1.</span> <span class="nav-text">数据存储存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%8C%E5%AD%98%E5%82%A8"><span class="nav-number">1.2.</span> <span class="nav-text">行存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8A%BF"><span class="nav-number">1.2.1.</span> <span class="nav-text">优势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%BA%E7%82%B9"><span class="nav-number">1.2.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%97%E5%AD%98%E5%82%A8"><span class="nav-number">1.3.</span> <span class="nav-text">列存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8A%BF-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">优势</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%BA%E7%82%B9-1"><span class="nav-number">1.4.</span> <span class="nav-text">缺点</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
