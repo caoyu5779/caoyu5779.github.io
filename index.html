@@ -159,6 +159,81 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/17/2021-03-17/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/luffy.jpeg#/images/avatar.gif">
+      <meta itemprop="name" content="JesusLee">
+      <meta itemprop="description" content="chaos with slience">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chaos">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/17/2021-03-17/" class="post-title-link" itemprop="url">年轻真的有熬夜的资本啊</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-03-17 10:29:45 / 修改时间：10:42:34" itemprop="dateCreated datePublished" datetime="2021-03-17T10:29:45+08:00">2021-03-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Callback-To-Think/" itemprop="url" rel="index"><span itemprop="name">Callback To Think</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>清风徐来，水波不兴</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/03/17/2021-03-17/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/16/2021-03-16/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -934,100 +1009,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/11/2020-12-11/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/luffy.jpeg#/images/avatar.gif">
-      <meta itemprop="name" content="JesusLee">
-      <meta itemprop="description" content="chaos with slience">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chaos">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/12/11/2020-12-11/" class="post-title-link" itemprop="url">行存储与列存储</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-12-11 10:23:23" itemprop="dateCreated datePublished" datetime="2020-12-11T10:23:23+08:00">2020-12-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-16 10:56:29" itemprop="dateModified" datetime="2021-03-16T10:56:29+08:00">2021-03-16</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Callback-to-Think/" itemprop="url" rel="index"><span itemprop="name">Callback to Think</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="2020-12-11"><a href="#2020-12-11" class="headerlink" title="2020-12-11"></a>2020-12-11</h1><h2 id="数据存储存储"><a href="#数据存储存储" class="headerlink" title="数据存储存储"></a>数据存储存储</h2><p>行存储(大部分关系型数据库)和列存储，是数据库底层组织数据的方式</p>
-<h2 id="行存储"><a href="#行存储" class="headerlink" title="行存储"></a>行存储</h2><p>行存储利于数据一行一行的写入，写入数据记录时，只需要将数据追加到已有数据记录后面，配合B+Tree和SS-Table作为索引，就能快速通过主键找到对应的行数据。</p>
-<h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><ol>
-<li>数据写入会更快，对按记录查询数据更加简单</li>
-</ol>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
-<li>针对于数据统计等OLAP(在线分析处理)，行存储需要将对应的数据读入内存中，然后对分析数据列进行数据分析操作。读多少行，就会有多少次磁盘访问。</li>
-<li>会读取到分析时不需要的列</li>
-<li>数据不利于压缩</li>
-</ol>
-<h2 id="列存储"><a href="#列存储" class="headerlink" title="列存储"></a>列存储</h2><p>列存储将每一列的数据组织在一起。每列存储在一个独立的文件中，一个查询只需要读取和解析查询里的列。</p>
-<h3 id="优势-1"><a href="#优势-1" class="headerlink" title="优势"></a>优势</h3><ol>
-<li>只需要少量次数就可以将需要分析的数据读取出来。</li>
-<li>可以只读取必要的列</li>
-<li>每一列本身相当于索引。所以在做一些需要索引的操作时，就不需要额外的数据结构来为此列创建合适的索引。</li>
-<li>利于大数据集的数据聚合操作</li>
-<li>每一列的数据都是相同类型的，相关性大，利于数据压缩。节约空间，减少IO读取</li>
-</ol>
-<h2 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h2><ol>
-<li>一行数据写入时，会同时修改多个列，对一个一个记录的数据，写入和读取都很慢</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1099,16 +1080,16 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
